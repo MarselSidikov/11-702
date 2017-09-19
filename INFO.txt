@@ -62,7 +62,7 @@ Task05
 3) Заполнить массив N-числами с консоли
 4) Поменять местами минимум и максимум в массиве
 
-
+https://github.com/MarselSidikov/JAVA_IT_PARK_WORK_3/wiki
 
 
 
