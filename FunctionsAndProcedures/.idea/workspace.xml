@@ -34,7 +34,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Program2.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Program2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/itis/Program2.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="271">
@@ -42,6 +42,19 @@
               <folding>
                 <element signature="e#517#518#0" expanded="true" />
                 <element signature="e#545#546#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Program3.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ru/itis/Program3.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+              <folding>
+                <element signature="e#204#205#0" expanded="true" />
+                <element signature="e#242#243#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -67,8 +80,8 @@
         <option value="$PROJECT_DIR$/src/ru/itis/Main.java" />
         <option value="$PROJECT_DIR$/src/ru/itis/Program.java" />
         <option value="$PROJECT_DIR$/src/ru/itis/Program1.java" />
-        <option value="$PROJECT_DIR$/src/ru/itis/Program3.java" />
         <option value="$PROJECT_DIR$/src/ru/itis/Program2.java" />
+        <option value="$PROJECT_DIR$/src/ru/itis/Program3.java" />
       </list>
     </option>
   </component>
@@ -235,12 +248,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1505812450036</updated>
-      <workItem from="1505812463000" duration="1787000" />
+      <workItem from="1505812463000" duration="2902000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1787000" />
+    <option name="totallyTimeSpent" value="2902000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="698" extended-state="6" />
@@ -306,6 +319,17 @@
           <folding>
             <element signature="e#517#518#0" expanded="true" />
             <element signature="e#545#546#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/itis/Program3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+          <folding>
+            <element signature="e#204#205#0" expanded="true" />
+            <element signature="e#242#243#0" expanded="true" />
           </folding>
         </state>
       </provider>
