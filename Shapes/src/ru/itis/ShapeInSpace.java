@@ -11,7 +11,7 @@ public class ShapeInSpace {
     // ПОЛЯ
     private double x;
     private double y;
-    private double z;
+    protected double z;
 
     // КОНСТРУКТОР
 
