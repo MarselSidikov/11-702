@@ -22,4 +22,8 @@ public class Sphere extends ShapeInSpace {
     public void scale(double value) {
         this.radius = this.radius * value;
     }
+
+    public double getVolume() {
+        return (4/3.0) * Math.PI * (radius*radius*radius);
+    }
 }

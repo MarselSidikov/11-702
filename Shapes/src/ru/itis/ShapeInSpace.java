@@ -7,7 +7,7 @@ package ru.itis;
  * @author Sidikov Marsel (First Software Engineering Platform)
  * @version v1.0
  */
-public class ShapeInSpace {
+    public abstract class ShapeInSpace {
     // ПОЛЯ
     private double x;
     private double y;
@@ -40,7 +40,7 @@ public class ShapeInSpace {
     }
 
     // не выполняется ничего
-    public void scale(double value) {
-        return;
-    }
+    public abstract void scale(double value);
+
+    public abstract double getVolume();
 }

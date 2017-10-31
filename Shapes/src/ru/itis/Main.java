@@ -3,6 +3,8 @@ package ru.itis;
 public class Main {
 
     public static void main(String[] args) {
+        // ShapeInSpace shape = new ShapeInSpace(2,3,4);
+
         Box box = new Box(1, 2, 3, 4, 5, 6);
         Box box1 = new Box(1, 2, 3, 4, 5, 6);
         Box box2 = new Box(1, 2, 3, 4, 5, 6);

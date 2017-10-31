@@ -37,6 +37,10 @@ public class Box extends ShapeInSpace {
         this.width = this.width * value;
     }
 
+    public double getVolume() {
+        return length * height * width;
+    }
+
     public void rectanglize() {
         double stepByZ = this.width / 2;
         this.width = 0;
