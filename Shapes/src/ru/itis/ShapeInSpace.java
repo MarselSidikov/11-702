@@ -38,9 +38,4 @@ package ru.itis;
         this.y = y;
         this.z = z;
     }
-
-    // не выполняется ничего
-    public abstract void scale(double value);
-
-    public abstract double getVolume();
 }

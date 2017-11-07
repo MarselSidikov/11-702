@@ -16,9 +16,7 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        helloButton.setOnAction(event -> {
-            helloLabel.setText("ПРИВЕТТТТТТ!!!!!!!!");
-        });
+        helloButton.setOnAction(event -> helloLabel.setText("Bye"));
     }
 
 }

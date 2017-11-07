@@ -13,10 +13,24 @@ public class Main {
         Sphere sphere3 = new Sphere(1, 2, 3, 10);
         Sphere sphere4 = new Sphere(1, 2, 3, 10);
 
-        ShapeInSpace shapes[] = {box, box1, box2, sphere, sphere2, sphere3, sphere4};
+        Point point = new Point(1, 1, 1);
+
+        Scalable scalables[] = {box, box1, box2, sphere, sphere2, sphere3, sphere4};
+
+        for (Scalable scalable : scalables) {
+            scalable.scale(10);
+        }
+
+        ShapeInSpace shapes[] = {box, box1, box2, sphere, sphere2, sphere3, sphere4, point};
 
         for (ShapeInSpace shape : shapes) {
-            shape.scale(10);
+            shape.move(2, 2, 2);
+        }
+
+        Volumetric volumetrics[] = {box, box1, box2, sphere, sphere2, sphere3, sphere4};
+
+        for (Volumetric volumetric : volumetrics) {
+            System.out.println(volumetric.getVolume());
         }
     }
 }

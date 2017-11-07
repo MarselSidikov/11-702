@@ -7,7 +7,7 @@ package ru.itis;
  * @author Sidikov Marsel (First Software Engineering Platform)
  * @version v1.0
  */
-public class Box extends ShapeInSpace {
+public class Box extends ShapeInSpace implements Scalable, Volumetric {
     private double height;
     private double width;
     private double length;

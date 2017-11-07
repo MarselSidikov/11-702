@@ -7,7 +7,7 @@ package ru.itis;
  * @author Sidikov Marsel (First Software Engineering Platform)
  * @version v1.0
  */
-public class Sphere extends ShapeInSpace {
+public class Sphere extends ShapeInSpace implements Scalable, Volumetric {
     private double radius;
 
     public Sphere(double x, double y, double z, double radius) {
