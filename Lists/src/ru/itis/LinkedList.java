@@ -22,13 +22,23 @@ public class LinkedList implements List {
     // ссылка на последний элемент списка
     private Node tail;
 
+    private int count;
+
     public LinkedList() {
         this.head = null;
         this.tail = null;
+        this.count = 0;
     }
 
     @Override
     public Object get(int index) {
+        if (index < count) {
+            Node current = head;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+            return current.value;
+        }
         return null;
     }
 
@@ -43,6 +53,8 @@ public class LinkedList implements List {
             newNode.next = head;
             head = newNode;
         }
+
+        count++;
     }
 
     @Override
@@ -50,6 +62,7 @@ public class LinkedList implements List {
         Node newNode = new Node(element);
         tail.next = newNode;
         tail = newNode;
+        count++;
     }
 
     @Override
