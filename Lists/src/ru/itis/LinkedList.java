@@ -1,5 +1,7 @@
 package ru.itis;
 
+import java.util.Iterator;
+
 /**
  * 13.02.2018
  * LinkedList
@@ -7,13 +9,19 @@ package ru.itis;
  * @author Sidikov Marsel (First Software Engineering Platform)
  * @version v1.0
  */
-public class LinkedList implements List {
+public class LinkedList<T> implements List<T> {
 
-    private static class Node {
-        Object value;
+    // TODO: реализовать
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
+
+    private class Node {
+        T value;
         Node next;
 
-        Node(Object value) {
+        Node(T value) {
             this.value = value;
         }
     }
@@ -31,7 +39,7 @@ public class LinkedList implements List {
     }
 
     @Override
-    public Object get(int index) {
+    public T get(int index) {
         if (index < count) {
             Node current = head;
             for (int i = 0; i < index; i++) {
@@ -43,7 +51,7 @@ public class LinkedList implements List {
     }
 
     @Override
-    public void addToBegin(Object object) {
+    public void addToBegin(T object) {
         Node newNode = new Node(object);
 
         if (head == null) {
@@ -58,20 +66,40 @@ public class LinkedList implements List {
     }
 
     @Override
-    public void add(Object element) {
+    public void add(T element) {
         Node newNode = new Node(element);
-        tail.next = newNode;
-        tail = newNode;
+        if (head == null) {
+            head  = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
         count++;
     }
 
     @Override
-    public void remove(Object element) {
+    public int size() {
+        return count;
+    }
+
+    @Override
+    public void remove(T element) {
 
     }
 
     @Override
-    public boolean contains(Object element) {
+    public boolean contains(T element) {
         return false;
+    }
+
+    public static <E extends Comparable<E>> LinkedList<E> merge(LinkedList<E> aList,
+                                                                LinkedList<E> bList) {
+        LinkedList<E> result = new LinkedList<>();
+
+        Iterator<E> aIterator = aList.iterator();
+        Iterator<E> bIterator = bList.iterator();
+
+        return null;
     }
 }

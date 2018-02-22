@@ -7,8 +7,9 @@ package ru.itis;
  * @author Sidikov Marsel (First Software Engineering Platform)
  * @version v1.0
  */
-public interface Collection {
-    void add(Object element);
-    void remove(Object element);
-    boolean contains(Object element);
+public interface Collection<E> extends Iterable<E> {
+    void add(E element);
+    void remove(E element);
+    boolean contains(E element);
+    int size();
 }

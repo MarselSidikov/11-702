@@ -1,18 +1,33 @@
 package ru.itis;
 
+import java.util.Iterator;
+
 public class Main {
 
     public static void main(String[] args) {
-	    List list = new LinkedList();
-	    list.addToBegin(123); // 3
-	    list.addToBegin(124); // 2
-	    list.addToBegin(125); // 1
-	    list.addToBegin(126); // 0
-	    list.add("Привет!"); // 4
-	    list.add(404); // 5
+	    ArrayList<Integer> list = new ArrayList<>();
+		list.add(185);
+		list.add(170);
+		list.add(178);
+		list.add(167);
+		list.add(183);
+		list.add(171);
+		list.add(179);
 
-		int x = (int)list.get(4);
-        System.out.println(x);
-        int i = 0 ;
+		for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
+
+        System.out.println("С итератором: ");
+        Iterator<Integer>  iterator = list.iterator();
+
+		while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+        System.out.println("С foreach");
+        for (int value : list) {
+            System.out.println(value);
+        }
     }
 }

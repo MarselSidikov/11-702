@@ -7,7 +7,7 @@ package ru.itis;
  * @author Sidikov Marsel (First Software Engineering Platform)
  * @version v1.0
  */
-public interface List extends Collection {
-    Object get(int index);
-    void addToBegin(Object object);
+public interface List<T> extends Collection<T> {
+    T get(int index);
+    void addToBegin(T object);
 }
