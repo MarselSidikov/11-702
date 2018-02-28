@@ -1,5 +1,6 @@
 package ru.itis;
 
+import java.util.Comparator;
 import java.util.Iterator;
 
 /**
@@ -17,7 +18,7 @@ public class ArrayList<T> implements List<T> {
     private int count;
 
     public ArrayList() {
-        this.elements = (T[])(new Object[DEFAULT_SIZE]);
+        this.elements = (T[]) (new Object[DEFAULT_SIZE]);
         this.count = 0;
     }
 
@@ -74,6 +75,7 @@ public class ArrayList<T> implements List<T> {
         ArrayListIterator() {
             this.currentIndex = 0;
         }
+
         @Override
         public boolean hasNext() {
             return currentIndex < count;
@@ -87,8 +89,40 @@ public class ArrayList<T> implements List<T> {
         }
     }
 
+    private void set(int index, T value) {
+        this.elements[index] = value;
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new ArrayListIterator();
+    }
+
+    private static <E> void bubbleSort(ArrayList<E> list, Comparator<E> comparator) {
+        for (int i = list.size() - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                int compareResult = 0;
+                if (comparator != null) {
+                    compareResult = comparator.compare(list.get(j), list.get(j + 1));
+                } else {
+                    Comparable<E> comparableA = (Comparable<E>) list.get(j);
+                    compareResult = comparableA.compareTo(list.get(j+1));
+                }
+
+                if (compareResult > 0) {
+                    E temp = list.get(j);
+                    list.set(j, list.get(j + 1));
+                    list.set(j + 1, temp);
+                }
+            }
+        }
+    }
+
+    public static <E extends Comparable<E>> void sort(ArrayList<E> list) {
+        bubbleSort(list, null);
+    }
+
+    public static <E> void sort(ArrayList<E> list, Comparator<E> comparator) {
+        bubbleSort(list, comparator);
     }
 }

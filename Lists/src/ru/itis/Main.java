@@ -29,5 +29,12 @@ public class Main {
         for (int value : list) {
             System.out.println(value);
         }
+
+        ArrayList.sort(list);
+
+        System.out.println("После сортировки");
+        for (int value : list) {
+            System.out.println(value);
+        }
     }
 }
