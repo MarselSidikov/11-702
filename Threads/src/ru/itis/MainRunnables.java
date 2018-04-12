@@ -8,4 +8,11 @@ package ru.itis;
  * @version v1.0
  */
 public class MainRunnables {
+    public static void main(String[] args) {
+        Thread marselThread = new Thread(new MarselNameRunnable());
+        Thread guzelThread = new Thread(new GuzelNameRunnable());
+
+        marselThread.start();
+        guzelThread.start();
+    }
 }
