@@ -5,6 +5,8 @@ import com.beust.jcommander.Parameter;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -37,14 +39,22 @@ public class Main {
     }
 
     public void run() throws Exception {
-            Files
-                    .list(Paths.get(classFolder))
+        // надо передавать, например
+        // -classFolder "C:\Users\admin.WIN-IPM3OA3VQNQ\Desktop\Java\Classes"
+        URL url = new URL("file:\\" + classFolder + "\\");
+        URLClassLoader loader = URLClassLoader.newInstance(new URL[]{url}, getClass().getClassLoader());
+        Files
+                    .list(Paths.get(url.toURI().normalize()))
                     .forEach(file -> {
                         try {
-                            URL url = new URL("file://C:\\Users\\admin.WIN-IPM3OA3VQNQ\\Desktop\\Java\\Classes\\");
-                            URLClassLoader loader = URLClassLoader.newInstance(new URL[]{url}, getClass().getClassLoader());
-                            Class aClass = loader.loadClass("User");
-                            System.out.println(aClass.getName());
+                            Class aClass = loader.loadClass(file.getFileName().toString().split("\\.")[0]);
+                            Field fields[] = aClass.getDeclaredFields();
+                            Class fieldsTypes[] = new Class[fields.length];
+                            for (int i = 0; i < fields.length; i++) {
+                                fieldsTypes[i] = fields[i].getType();
+                            }
+                            Constructor constructor = aClass.getConstructor(fieldsTypes);
+                            System.out.println(constructor.newInstance(24, "Marsel", true));
                         } catch (Exception e) {
                             throw new IllegalArgumentException(e);
                         }
