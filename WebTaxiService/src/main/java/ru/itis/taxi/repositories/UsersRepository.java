@@ -13,5 +13,5 @@ import java.util.Optional;
  * @version v1.0
  */
 public interface UsersRepository extends CrudRepository<User ,Long> {
-    Optional<User> findByPhone(String phone);
+    Optional<User>   findByPhone(String phone);
 }
