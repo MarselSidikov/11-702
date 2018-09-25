@@ -20,5 +20,10 @@ public class Main {
         usersService.register("79372824941", "qwerty007");
         System.out.println(usersService.findByPhone("79372824941"));
         System.out.println(usersService.isRegistered("79372824942", "qwerty007"));
+
+        User user = usersService.findByPhone("79372824941");
+        if (user.isAdmin()) {
+            System.out.println(user.asAdmin().getManagers());
+        }
     }
 }

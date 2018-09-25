@@ -1,59 +1,49 @@
 create table taxi_user (
-  --   id - первичный ключ, генерируется базой данных автоинтерементом
-  id            serial primary key,
+  id            bigserial primary key,
   first_name    VARCHAR(50),
   last_name     VARCHAR(50),
   hash_password VARCHAR(200),
   phone         VARCHAR(20),
   email         VARCHAR(100),
-  photo         VARCHAR(1000)
+  photo         VARCHAR(1000),
+  role          VARCHAR(100),
+  admin_id      bigint
 );
 
-insert into taxi_user (first_name,
-                       last_name,
-                       hash_password,
-                       phone,
-                       email,
-                       photo)
-values ('Марсель',
-        'Сидиков',
-        '$2a$10$UZsf7FXtumtD3fMPEfdsCuqtGaCeEpGeJJtH0sOMufWCXhDrE5Yna',
-        '79372824941',
-        'sidikov.marsel@gmail.com',
-        'https://pp.userapi.com/c834302/v834302189/c9df0/GbrLxPuW8Bc.jpg');
+alter table taxi_user add foreign key (admin_id)
+references taxi_user(id);
 
-insert into  taxi_user(first_name, last_name)
-values ('Гузель', 'Мусина');
-insert into  taxi_user(first_name, last_name)
-values ('Никита', 'Карамов');
-insert into  taxi_user(first_name, last_name)
-values ('Даша', 'Ковтун');
-insert into  taxi_user(first_name, last_name)
-values ('Ирина', 'Нестерова');
-insert into  taxi_user(first_name, last_name)
-values ('Вадим', 'Беспалов');
-insert into  taxi_user(first_name, last_name)
-values ('Даниил', 'Карпов');
-insert into  taxi_user(first_name, last_name)
-values ('Аня', 'Тугбаева');
-insert into  taxi_user(first_name, last_name)
-values ('Алмаз', 'Хамеджанов');
-insert into  taxi_user(first_name, last_name)
-values ('Аяз', 'Хуснутдинов');
-insert into  taxi_user(first_name, last_name)
-values ('Булат', 'Каюмов');
-insert into  taxi_user(first_name, last_name)
-values ('Диляра', 'Мухамедшина');
+create table authority (
+  id        bigserial primary key,
+  authority varchar(100)
+);
 
-ALTER TABLE taxi_user ADD COLUMN role VARCHAR(50);
+insert into authority (authority)
+values ('READ_USERS');
+insert into authority (authority)
+values ('ADD_USER');
+insert into authority (authority)
+values ('BLOCK_USER');
+insert into authority (authority)
+values ('ORDER_TAXI');
 
-update taxi_user set role = 'driver' where id = 5;
-update taxi_user set role = 'driver' where id = 6;
-update taxi_user set role = 'driver' where id = 7;
-update taxi_user set role = 'user' where id between 1 and 4;
-update taxi_user set role = 'admin' where role ISNULL;
+create table user_authority (
+  user_id      bigint,
+  authority_id bigint
+);
 
-select * from taxi_user where role = 'admin';
+alter table user_authority
+  add foreign key (user_id) references taxi_user (id);
+alter table user_authority
+  add foreign key (authority_id) references authority (id);
 
+create table manager_client (
+  client_id bigint,
+  manager_id bigint
+);
 
+alter table manager_client
+  add foreign key (client_id) references taxi_user(id);
 
+alter table manager_client
+  add foreign key (manager_id) references taxi_user(id);
