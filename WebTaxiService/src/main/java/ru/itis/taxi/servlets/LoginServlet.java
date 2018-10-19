@@ -1,6 +1,9 @@
 package ru.itis.taxi.servlets;
 
+import ru.itis.taxi.locales.Locales;
+
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,14 +21,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter writer = response.getWriter();
-
-        response.setHeader("Content-Type", "text/html");
-        writer.write("<form action='http://localhost:8080/login' method='post'>");
-        writer.write("  <input type='text' name='login' placeholder='Login'>");
-        writer.write("  <input type='password' name='password' placeholder='Password'>");
-        writer.write("  <input type='submit' name='' value='Enter!'>");
-        writer.write("</form>");
+        request.getRequestDispatcher("/jsp/signIn.jsp").forward(request, response);
     }
 
     @Override

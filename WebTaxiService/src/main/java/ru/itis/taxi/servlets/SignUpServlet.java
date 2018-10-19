@@ -2,6 +2,7 @@ package ru.itis.taxi.servlets;
 
 import lombok.SneakyThrows;
 import ru.itis.taxi.forms.UserForm;
+import ru.itis.taxi.locales.Locales;
 import ru.itis.taxi.models.User;
 import ru.itis.taxi.repositories.UsersRepository;
 import ru.itis.taxi.repositories.UsersRepositoryJdbcImpl;
@@ -10,6 +11,7 @@ import ru.itis.taxi.services.UsersService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
