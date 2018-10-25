@@ -8,50 +8,51 @@
     <title>Users</title>
 </head>
 <script>
-    function sendUser(name) {
-        $.ajax({
-            type: 'POST',
-            url: '/users',
-            data: {
-                name : name
-            }
-        }).done(function(data) {
-            let divTable = document.getElementById('users_table');
-            let tableHtml = "";
-            tableHtml += '<table>';
-            tableHtml +=
-                '<tr>' +
+    function initialize() {
+        $("#send").on("click", function () {
+            $.ajax({
+                type: 'POST',
+                url: '/users',
+                data: {
+                    name: $("#name").val()
+                }
+            }).done(function (data) {
+                let tableHtml = "";
+                tableHtml += '<table>';
+                tableHtml +=
+                    '<tr>' +
                     '<th>' +
-                        'id' +
+                    'id' +
                     '</th>' +
                     '<th>' +
-                        'name' +
+                    'name' +
                     '</th>' +
-                '</tr>';
+                    '</tr>';
 
-            for (let i = 0; i < data.length; i++) {
-                tableHtml += '<tr>' +
+                for (let i = 0; i < data.length; i++) {
+                    tableHtml += '<tr>' +
                         '<td>' + data[i].id + '</td>' +
                         '<td>' + data[i].name + '</td>' +
                         '</tr>';
-            }
-            tableHtml += '</table>';
-            divTable.innerHTML = tableHtml;
-        }).fail(function() {
-            alert('ALL BAD')
+                }
+                tableHtml += '</table>';
+                $("#users_table").html(tableHtml);
+            }).fail(function () {
+                alert('ALL BAD')
+            });
         });
     }
 </script>
-<body>
-    <div>
-        <label for="name">Имя пользователя</label>
-        <br>
-        <input id="name" placeholder="Name">
-        <br>
-        <button onclick="sendUser(document.getElementById('name').value)" id="send">Send</button>
-    </div>
-    <div id="users_table">
+<body onload="initialize()">
+<div>
+    <label for="name">Имя пользователя</label>
+    <br>
+    <input id="name" placeholder="Name">
+    <br>
+    <button id="send">Send</button>
+</div>
+<div id="users_table">
 
-    </div>
+</div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package ru.itis.repositories;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import ru.itis.models.User;
@@ -31,9 +32,14 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
     private static final String SQL_INSERT_USER =
             "insert into shop_user(name) values (?)";
 
+    //language=SQL
+    private static final String SQL_SELECT_BY_NAME =
+            "select * from shop_user where name = ?";
+
     private RowMapper<User> userRowMapper = (resultSet, i) -> User.builder()
             .id(resultSet.getLong("id"))
             .name(resultSet.getString("name"))
+            .passwordHash(resultSet.getString("password_hash"))
             .build();
 
     public UsersRepositoryJdbcTemplateImpl(DataSource dataSource) {
@@ -64,5 +70,14 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
     @Override
     public void update(User model) {
 
+    }
+
+    @Override
+    public User findByName(String name) {
+        try {
+            return jdbcTemplate.queryForObject(SQL_SELECT_BY_NAME, userRowMapper, name);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 }

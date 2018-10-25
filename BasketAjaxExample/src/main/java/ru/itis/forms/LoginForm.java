@@ -1,4 +1,4 @@
-package ru.itis.models;
+package ru.itis.forms;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,18 +6,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 22.10.2018
- * User
+ * 24.10.2018
+ * LoginForm
  *
  * @author Sidikov Marsel (First Software Engineering Platform)
  * @version v1.0
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
-public class User {
-    private Long id;
+@NoArgsConstructor
+@AllArgsConstructor
+public class LoginForm {
     private String name;
-    private String passwordHash;
+    private String password;
 }

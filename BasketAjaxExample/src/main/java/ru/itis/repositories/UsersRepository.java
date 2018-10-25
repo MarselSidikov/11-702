@@ -10,4 +10,5 @@ import ru.itis.models.User;
  * @version v1.0
  */
 public interface UsersRepository extends CrudRepository<User> {
+    User findByName(String name);
 }
