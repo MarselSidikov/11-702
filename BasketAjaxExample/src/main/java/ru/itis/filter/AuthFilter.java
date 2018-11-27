@@ -42,30 +42,39 @@ public class AuthFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
+        // явное преобразование запросов
         HttpServletRequest request = (HttpServletRequest)servletRequest;
         HttpServletResponse response = (HttpServletResponse)servletResponse;
-
+        // вытаскиваем из запроса куки
         Cookie cookies[] = request.getCookies();
-
+        // выставляем флажок в false
         boolean exists = false;
-
+        // если куков нет, создаем пустой массив куков
         if (cookies == null) {
             cookies = new Cookie[0];
         }
-
+        // смотрим каждую куку
         for (Cookie cookie : cookies) {
+            // если нашли куку с именем auth
             if (cookie.getName().equals("auth")) {
+                // и при этом ее нет в БД
                 if (!service.isExistByCookie(cookie.getValue())) {
+                    // делаем редирект на login
                     response.sendRedirect("/login");
+                    // останавливаем работу фильтра
                     return;
                 } else {
+                    // если все норм - флажок true
                     exists = true;
                 }
             }
         }
+        // если флажок так и остался false
         if (!exists) {
+            // редирект на логин
             response.sendRedirect("/login");
         } else {
+            // если все ок - отдаем запрос дальше (либо сервлетам, либо другим фильтрам
             chain.doFilter(request, response);
         }
 
