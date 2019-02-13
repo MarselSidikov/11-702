@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="atm" class="ru.itis.AtmExtendedImpl">
+        <constructor-arg name="terminal" ref="terminal"/>
+        <constructor-arg name="totalSum" value="300"/>
+    </bean>
+
+    <bean name="card" class="ru.itis.Card">
+        <constructor-arg name="password" value="7777"/>
+        <constructor-arg name="totalSum" value="300"/>
+    </bean>
+
+    <bean name="terminal" class="ru.itis.TerminalStandardImpl"/>
+
+
+</beans>
