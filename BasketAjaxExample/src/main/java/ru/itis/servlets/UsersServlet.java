@@ -1,7 +1,6 @@
 package ru.itis.servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ru.itis.forms.UserForm;
 import ru.itis.models.User;
 import ru.itis.repositories.UsersRepository;
