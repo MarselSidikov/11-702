@@ -1,6 +1,7 @@
 package ru.itis.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.itis.UserForm;
 import ru.itis.repositories.UsersRepository;
 import ru.itis.models.User;
 
@@ -21,5 +22,15 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public List<User> getAllUsers() {
         return usersRepository.findAll();
+    }
+
+    @Override
+    public void addUser(UserForm userForm) {
+        User user = User.builder()
+                .name(userForm.getName())
+                .age(userForm.getAge())
+                .build();
+
+        usersRepository.save(user);
     }
 }

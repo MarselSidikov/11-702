@@ -1,5 +1,6 @@
 package ru.itis.services;
 
+import ru.itis.UserForm;
 import ru.itis.models.User;
 
 import java.util.List;
@@ -13,4 +14,6 @@ import java.util.List;
  */
 public interface UsersService {
     List<User> getAllUsers();
+
+    void addUser(UserForm userForm);
 }

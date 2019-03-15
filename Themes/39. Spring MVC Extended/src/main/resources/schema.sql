@@ -1,6 +1,8 @@
 create table shop_user (
   id bigserial primary key,
-  name varchar(30)
+  name varchar(30),
+  password_hash varchar (100),
+  age integer
 );
 
 create table product (

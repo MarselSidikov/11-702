@@ -1,0 +1,11 @@
+POST http://localhost:8080/users/json
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "name" : "Konstantin",
+  "age" : 22
+}
+
+###

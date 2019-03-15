@@ -1,10 +1,14 @@
 package ru.itis.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import ru.itis.UserForm;
 import ru.itis.services.UsersService;
 import ru.itis.models.User;
 
@@ -32,5 +36,19 @@ public class UsersController {
         modelAndView.addObject("users", users);
         modelAndView.setViewName("users_page");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    public String postUser(UserForm userForm) {
+        usersService.addUser(userForm);
+        return "redirect:/users";
+    }
+
+    @RequestMapping(value = "/users/json", method = RequestMethod.POST,
+    produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<User> postUserAsJson(@RequestBody UserForm userForm) {
+        usersService.addUser(userForm);
+        return usersService.getAllUsers();
     }
 }
