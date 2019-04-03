@@ -8,23 +8,26 @@ package ru.itis;
  * @version v1.0
  */
 public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
-    class Node {
-        private T value;
+
+    static class Node<E> {
+        private E value;
         private Node left;
         private Node right;
 
-        Node(T value) {
+        Node(E value) {
             this.value = value;
         }
     }
-
-    private Node root;
+    // корень
+    private Node<T> root;
 
     public TreeBstImpl() {
         this.root = null;
     }
 
     public void insert(T value) {
+        // вызывает другую функцию, которая возвращает корень
+        // дерева с новым элементом
         this.root = insert(root, value);
     }
 
@@ -41,13 +44,19 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
     }
 
     private Node insert(Node root, T value) {
+        // если корня нет
         if (root == null) {
-            root = new Node(value);
-        } else if (value.compareTo(root.value) <= 0) {
+            // создаете узел и добавляете в корень
+            root = new Node<>(value);
+            // если значение меньше корня
+        } else if (value.compareTo((T)root.value) <= 0) {
+            // вставляет в левое поддерево
             root.left = insert(root.left, value);
         } else {
+            // если больше - в правое поддерево
             root.right = insert(root.right, value);
         }
+        // возвращаем текущий корень
         return root;
     }
 
